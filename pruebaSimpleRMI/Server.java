@@ -13,6 +13,14 @@ public class Server implements Hola {
     public String sayHello() 
     { 
         cuantos++;
+		try 
+		{
+			Thread.sleep(100);
+		} 
+		catch(InterruptedException e)
+		{
+			 System.out.println("Error de interrupción. Detalle: " + e);
+		}
         System.out.println("Proporcionando el servicio no. " + cuantos);
         return "Servicio no. " + cuantos + " proporcionado desde " + strHostname;
     }
