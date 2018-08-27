@@ -24,16 +24,34 @@ public class Server implements Hola {
         System.out.println("Proporcionando el servicio no. " + cuantos);
         return "Servicio no. " + cuantos + " proporcionado desde " + strHostname;
     }
+
+    public String suma(int a, int b) 
+    { 
+        int c;
+        cuantos++;
+		try 
+		{
+			Thread.sleep(100);
+            c = a + b;
+		} 
+		catch(InterruptedException e)
+		{
+            c = 0;
+			System.out.println("Error de interrupción. Detalle: " + e);
+		}
+        System.out.println("Proporcionando el servicio no. " + cuantos);
+        return "Servicio no. " + cuantos + " proporcionado desde " + strHostname + ". \n Con resultado: " + c;
+    }
         
     public static void main(String args[]) {
         
         try {
             Server obj = new Server();
-            Hola stub = (Hola) UnicastRemoteObject.exportObject(obj, 0);
+            Hola stub = (Suma) UnicastRemoteObject.exportObject(obj, 0);
 
             // Bind the remote object's stub in the registry
             Registry registry = LocateRegistry.getRegistry();
-            registry.rebind("Hola", stub);
+            egistry.rebind("Suma", stub);
 
             System.err.println("Server ready");
         } catch (Exception e) {

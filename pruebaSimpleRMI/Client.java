@@ -23,11 +23,11 @@ package example.hello;
             try 
             {
                 Registry registry = LocateRegistry.getRegistry(host);
-                Hola stub = (Hola) registry.lookup("Hola");
+                Hola stub = (Suma) registry.lookup("Suma");
                 for(i=0;i<N;i++)
                 {
 					t0 = System.nanoTime();
-   				    response = stub.sayHello();
+   				    response = stub.suma();
 					t1 = System.nanoTime();
 					dt = (double) (t1 - t0);
 					sdt += dt;
